@@ -32,7 +32,5 @@ function bubbleSortRecursive(arr, counter){
     }
   }
 
-  console.log(counter, arr);
-
   return bubbleSortRecursive(arr, counter - 1);
 }
