@@ -14,4 +14,11 @@ describe('Merge function', function(){
     const resultArr = [4,5];
     expect(merge(left, right)).toEqual(resultArr);
   })
+  
+})
+
+describe('Merge Sort function', function(){
+    it('is able to merge two sorted arrays into one sorted array', function(){
+        expect(mergeSort([3,1,2,5,4]).toEqual([1,2,3,4,5]);
+      })
 })

@@ -13,16 +13,25 @@ function merge(left, right){
 
   if (left[leftIndex] < right[rightIndex]){
     resultArr.push(left[leftIndex]);
-
     leftIndex++;
   } else {
     resultArr.push(right[rightIndex]);
     rightIndex++;
   }
 
-  if ( (left.length === 0 && right.length === 1) || (left.length === 0 && right.length === 1) ) {
-
+  let finalVal;
+  if(left[left.length-1] < right[right.length-1]){
+      finalVal = right[right.length-1]
+  } else {
+      finalVal = left[left.length-1]
   }
+  return resultArr.concat(finalVal);
+}
 
-  return resultArr;
+function mergeSort(array){
+    if(array.length === 1){
+        return array;
+    }
+    let splitArray = split(array);
+    return mergeSort(merge(splitArray[0], splitArray[1]))
 }
