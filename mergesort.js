@@ -25,13 +25,16 @@ function merge(left, right){
   } else {
       finalVal = left[left.length-1]
   }
-  return resultArr.concat(finalVal);
+  return resultArr;
 }
 
 function mergeSort(array){
-    if(array.length === 1){
-        return array;
+    if (array.length === 1){
+      return array;
     }
     let splitArray = split(array);
-    return mergeSort(merge(splitArray[0], splitArray[1]))
+
+    return merge(mergeSort(splitArray[0]), mergeSort(splitArray[1]));
 }
+
+console.log(mergeSort([3,4,7,1,99,0,34,2]));
