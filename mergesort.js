@@ -11,21 +11,17 @@ function merge(left, right){
   let leftIndex = 0;
   let rightIndex = 0;
 
-  if (left[leftIndex] < right[rightIndex]){
-    resultArr.push(left[leftIndex]);
-    leftIndex++;
-  } else {
-    resultArr.push(right[rightIndex]);
-    rightIndex++;
+  while(leftIndex < left.length && rightIndex < right.length){
+    if (left[leftIndex] < right[rightIndex]){
+        resultArr.push(left[leftIndex]);
+        leftIndex++
+      } else {
+        resultArr.push(right[rightIndex]);
+        rightIndex++
+      }
   }
-
-  let finalVal;
-  if(left[left.length-1] < right[right.length-1]){
-      finalVal = right[right.length-1]
-  } else {
-      finalVal = left[left.length-1]
-  }
-  return resultArr;
+  
+  return resultArr.concat(left.slice(leftIndex)).concat(right.slice(rightIndex));
 }
 
 function mergeSort(array){
@@ -33,8 +29,8 @@ function mergeSort(array){
       return array;
     }
     let splitArray = split(array);
+    console.log(splitArray[1])
 
     return merge(mergeSort(splitArray[0]), mergeSort(splitArray[1]));
 }
 
-console.log(mergeSort([3,4,7,1,99,0,34,2]));
